@@ -54,6 +54,7 @@
             this.RunProgramButton.TabIndex = 1;
             this.RunProgramButton.Text = "Run Program";
             this.RunProgramButton.UseVisualStyleBackColor = true;
+            this.RunProgramButton.Click += new System.EventHandler(this.RunProgramButton_Click);
             // 
             // Canvas
             // 
@@ -94,7 +95,6 @@
             this.Controls.Add(this.CommandLine);
             this.Name = "mainWindow";
             this.Text = "Turtle Draw";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Canvas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
