@@ -1,4 +1,6 @@
-﻿namespace ASE_assignment
+﻿using System.Drawing;
+
+namespace ASE_assignment
 {
     partial class mainWindow
     {
@@ -6,6 +8,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        public Bitmap image;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -28,6 +31,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.image = new Bitmap(300, 300);
+
             this.CommandLine = new System.Windows.Forms.TextBox();
             this.RunProgramButton = new System.Windows.Forms.Button();
             this.Canvas = new System.Windows.Forms.PictureBox();
