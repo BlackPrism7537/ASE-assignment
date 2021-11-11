@@ -64,6 +64,7 @@
             this.Canvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.Canvas.TabIndex = 2;
             this.Canvas.TabStop = false;
+            this.Canvas.Image = this.image;
             // 
             // RunCommandButton
             // 

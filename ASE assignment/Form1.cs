@@ -14,10 +14,13 @@ namespace ASE_assignment
     {
 
         CommandParser parser;
+        Canvas canvas;
+        Bitmap image = new Bitmap(300, 300);
 
         public mainWindow()
         {
             InitializeComponent();
+            this.canvas = new Canvas(Graphics.FromImage(image));
             this.parser = new CommandParser();
         }
 
