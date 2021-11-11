@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ASE_assignment
@@ -138,6 +134,31 @@ namespace ASE_assignment
             }
             
             save.Dispose();
+        }
+
+        private void syntaxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "drawTo <x>, <y> \n" +
+                "moveTo<x>, < y > \n" +
+                "rectangle<width>, < height >\n" +
+                "circle < radius >\n" +
+                "triangle < length >\n" +
+                "pen<color> { black, white, red, green, blue }\n" +
+                "fill < on / off >\n" +
+                "reset\n" +
+                "clear", 
+                "Syntax."
+            );
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Author: Zachery Barcoe\n" +
+                "Website: https://zacherybarcoe.netlify.app/",
+                "about."
+            );
         }
     }
 }
