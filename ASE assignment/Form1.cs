@@ -15,12 +15,13 @@ namespace ASE_assignment
 
         CommandParser parser;
         Canvas canvas;
+        Bitmap bitmap = new Bitmap(300, 300);
 
         public mainWindow()
         {
             InitializeComponent();
-            this.canvas = new Canvas(Graphics.FromImage(this.image));
-            this.parser = new CommandParser();
+            this.canvas = new Canvas(Graphics.FromImage(this.bitmap));
+            this.parser = new CommandParser(canvas);
         }
 
         /// <summary>
@@ -46,6 +47,7 @@ namespace ASE_assignment
             try
             {
                 this.parser.ParseCommand(command);
+                this.pictureBox1.Refresh();
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!");
@@ -87,6 +89,12 @@ namespace ASE_assignment
         {
             string[] program = RawStringToProgram(this.ProgramInput.Text);
             RunProgram(program);
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImageUnscaled(this.bitmap, 0, 0);
         }
     }
 }

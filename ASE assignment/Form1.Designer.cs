@@ -8,7 +8,6 @@ namespace ASE_assignment
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        public Bitmap image;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -31,14 +30,12 @@ namespace ASE_assignment
         /// </summary>
         private void InitializeComponent()
         {
-            this.image = new Bitmap(300, 300);
-
             this.CommandLine = new System.Windows.Forms.TextBox();
             this.RunProgramButton = new System.Windows.Forms.Button();
-            this.Canvas = new System.Windows.Forms.PictureBox();
             this.RunCommandButton = new System.Windows.Forms.Button();
             this.ProgramInput = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Canvas)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // CommandLine
@@ -61,16 +58,6 @@ namespace ASE_assignment
             this.RunProgramButton.UseVisualStyleBackColor = true;
             this.RunProgramButton.Click += new System.EventHandler(this.RunProgramButton_Click);
             // 
-            // Canvas
-            // 
-            this.Canvas.Location = new System.Drawing.Point(322, 38);
-            this.Canvas.Name = "Canvas";
-            this.Canvas.Size = new System.Drawing.Size(300, 300);
-            this.Canvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.Canvas.TabIndex = 2;
-            this.Canvas.TabStop = false;
-            this.Canvas.Image = this.image;
-            // 
             // RunCommandButton
             // 
             this.RunCommandButton.Location = new System.Drawing.Point(441, 8);
@@ -89,19 +76,28 @@ namespace ASE_assignment
             this.ProgramInput.Size = new System.Drawing.Size(300, 300);
             this.ProgramInput.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(322, 38);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(634, 351);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ProgramInput);
             this.Controls.Add(this.RunCommandButton);
-            this.Controls.Add(this.Canvas);
             this.Controls.Add(this.RunProgramButton);
             this.Controls.Add(this.CommandLine);
             this.Name = "mainWindow";
             this.Text = "Turtle Draw";
-            ((System.ComponentModel.ISupportInitialize)(this.Canvas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,9 +107,9 @@ namespace ASE_assignment
 
         private System.Windows.Forms.TextBox CommandLine;
         private System.Windows.Forms.Button RunProgramButton;
-        private System.Windows.Forms.PictureBox Canvas;
         private System.Windows.Forms.Button RunCommandButton;
         private System.Windows.Forms.TextBox ProgramInput;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

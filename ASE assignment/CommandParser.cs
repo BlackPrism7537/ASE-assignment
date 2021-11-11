@@ -8,6 +8,14 @@ namespace ASE_assignment
 {
     class CommandParser
     {
+        Canvas canvas;
+
+        public CommandParser(Canvas canvas)
+        {
+            this.canvas = canvas;
+        }
+
+
         /// <summary>
         /// command parser taking a string as input
         /// </summary>
@@ -25,6 +33,7 @@ namespace ASE_assignment
                     if (args.Length != 2) throw new Exception("incorrect number of params");
                     if (!int.TryParse(args[1], out _)) throw new Exception("Param 0 not a number");
                     Console.WriteLine("draw circle with radius" + args[1]);
+                    canvas.DrawCircle(int.Parse(args[1]));
                     break;
 
                 // rectangle <width>, <height>
@@ -33,6 +42,7 @@ namespace ASE_assignment
                     if (!int.TryParse(args[1], out _)) throw new Exception("Param 0 not a number");
                     if (!int.TryParse(args[2], out _)) throw new Exception("Param 1 not a number");
                     Console.WriteLine("draw rectangle with width" + args[1] + "and height" + args[2]);
+                    canvas.DrawRectangle(int.Parse(args[1]), int.Parse(args[2]));
                     break;
 
                 // triangle <length>
@@ -40,6 +50,7 @@ namespace ASE_assignment
                     if (args.Length != 2) throw new Exception("incorrect number of params");
                     if (!int.TryParse(args[1], out _)) throw new Exception("Param 0 not a number");
                     Console.WriteLine("draw triangle with side length" + args[1]);
+                    canvas.DrawTriangle(int.Parse(args[1]));
                     break;
 
                 // moveTo <x>, <y>
@@ -48,6 +59,7 @@ namespace ASE_assignment
                     if (!int.TryParse(args[1], out _)) throw new Exception("Param 0 not a number");
                     if (!int.TryParse(args[2], out _)) throw new Exception("Param 1 not a number");
                     Console.WriteLine("move pen to x" + args[1] + "and y" + args[2]);
+                    canvas.moveTo(int.Parse(args[1]), int.Parse(args[2]));
                     break;
 
                 // drawTo <x>, <y>
@@ -56,6 +68,7 @@ namespace ASE_assignment
                     if (!int.TryParse(args[1], out _)) throw new Exception("Param 0 not a number");
                     if (!int.TryParse(args[2], out _)) throw new Exception("Param 1 not a number");
                     Console.WriteLine("draw to x" + args[1] + "and y" + args[2]);
+                    canvas.DrawTo(int.Parse(args[1]), int.Parse(args[2]));
                     break;
 
                 // pen <color>
@@ -64,6 +77,7 @@ namespace ASE_assignment
                     if (args.Length != 2) throw new Exception("incorrect number of params");
                     if (!colors.Contains(args[1])) throw new Exception("not valid color");
                     Console.WriteLine("set pen color to" + args[1]);
+                    canvas.ChangeColor(args[1]);
                     break;
 
                 // fill <on/off>
@@ -78,12 +92,14 @@ namespace ASE_assignment
                 case "reset":
                     if (args.Length != 1) throw new Exception("incorrect number of params");
                     Console.WriteLine("reset pen position");
+                    canvas.reset();
                     break;
 
                 // clear
                 case "clear":
                     if (args.Length != 1) throw new Exception("incorrect number of params");
                     Console.WriteLine("clear canvas");
+                    canvas.clear();
                     break;
 
                 // command not found
