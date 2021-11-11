@@ -12,9 +12,13 @@ namespace ASE_assignment
 {
     public partial class mainWindow : Form
     {
+
+        CommandParser parser;
+
         public mainWindow()
         {
             InitializeComponent();
+            this.parser = new CommandParser();
         }
 
         /// <summary>
@@ -35,9 +39,16 @@ namespace ASE_assignment
         /// takes string command and runs it
         /// </summary>
         /// <param name="command"></param>
-        public static void RunCommandLine(string command)
+        public void RunCommandLine(string command)
         {
-            Console.WriteLine("command: " + command);
+            try
+            {
+                this.parser.ParseCommand(command);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!");
+            }
+                
         }
 
 
@@ -45,7 +56,7 @@ namespace ASE_assignment
         /// takes array of strings and individually runs them through the RunCommand() method
         /// </summary>
         /// <param name="program"></param>
-        public static void RunProgram(string[] program)
+        public void RunProgram(string[] program)
         {
             Console.WriteLine("Running Program...");
             foreach (string line in program)
