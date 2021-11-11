@@ -96,5 +96,48 @@ namespace ASE_assignment
             Graphics g = e.Graphics;
             g.DrawImageUnscaled(this.bitmap, 0, 0);
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string fileContent = "";
+
+            OpenFileDialog open = new OpenFileDialog();
+            open.InitialDirectory = "c:\\";
+            open.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            open.FilterIndex = 2;
+            open.RestoreDirectory = true;
+
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                //Get the path of specified file
+                string filePath = open.FileName;
+
+                fileContent = System.IO.File.ReadAllText(filePath);
+            }
+
+            open.Dispose();
+
+            this.ProgramInput.Text = fileContent;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string fileContent = this.ProgramInput.Text;
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.InitialDirectory = "c:\\";
+            save.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            save.FilterIndex = 2;
+            save.RestoreDirectory = true;
+
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = save.FileName;
+
+                System.IO.File.WriteAllText(filePath, fileContent);
+            }
+            
+            save.Dispose();
+        }
     }
 }
