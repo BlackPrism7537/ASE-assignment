@@ -11,7 +11,9 @@ namespace ASE_assignment
     {
         Graphics g;
         Pen Pen;
+        Brush Brush;
         int xPos, yPos;
+        bool fill;
 
         public Canvas(Graphics g)
         {
@@ -19,25 +21,34 @@ namespace ASE_assignment
             xPos = 0; 
             yPos = 0;
             Pen = new Pen(Color.Black, 1);
+            Brush = new SolidBrush(Color.Black);
+            fill = false;
         }
 
         public void DrawCircle(int radius)
         {
-            g.DrawEllipse(Pen, xPos, yPos, radius, radius);
+            if (fill) g.FillEllipse(Brush, xPos, yPos, radius, radius);
+            else g.DrawEllipse(Pen, xPos, yPos, radius, radius);
         }
 
         public void DrawRectangle(int width, int height)
         {
-            g.DrawRectangle(Pen, xPos, yPos, xPos + width, yPos + height);
+            if (fill) g.FillRectangle(Brush, xPos, yPos, xPos + width, yPos + height);
+            else g.DrawRectangle(Pen, xPos, yPos, xPos + width, yPos + height);
         }
 
         public void DrawTriangle(int length)
         {
             int y2 = yPos + (int)Math.Round(Math.Sqrt(3)/2 * length);
 
-            g.DrawLine(Pen, xPos, yPos, xPos + length, yPos);
-            g.DrawLine(Pen, xPos + length, yPos, xPos + length/2, y2);
-            g.DrawLine(Pen, xPos, yPos, xPos + length / 2, y2);
+            Point point1 = new Point(xPos, yPos);
+            Point point2 = new Point(xPos + length, yPos);
+            Point point3 = new Point(xPos + length/2, y2);
+
+            Point[] points = { point1, point2, point3 };
+
+            if (fill) g.FillPolygon(Brush, points);
+            else g.DrawPolygon(Pen, points);
         }
 
         public void moveTo(int x, int y)
@@ -77,11 +88,12 @@ namespace ASE_assignment
                     break;
             }
             Pen.Color = penColor;
+            Brush = new SolidBrush(penColor);
         }
 
         public void ChangeFill(bool option)
         {
-            //TODO
+            fill = option;
         }
 
         public void reset()
