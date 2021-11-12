@@ -30,6 +30,7 @@ namespace ASE_assignment
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
             this.CommandLine = new System.Windows.Forms.TextBox();
             this.RunProgramButton = new System.Windows.Forms.Button();
             this.RunCommandButton = new System.Windows.Forms.Button();
@@ -162,6 +163,7 @@ namespace ASE_assignment
             this.Controls.Add(this.CommandLine);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "mainWindow";
             this.Text = "Turtle Draw";
