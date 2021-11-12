@@ -16,7 +16,7 @@ namespace ASE_assignment
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mainWindow());
+            Application.Run(new MainWindow());
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ASE_assignment
 {
-	class CommandParser
+	public class CommandParser
 	{
 		Canvas canvas;
 
@@ -15,6 +15,32 @@ namespace ASE_assignment
 			this.canvas = canvas;
 		}
 
+		/// <summary>
+		/// converts raw string into string array 
+		/// splits at each new line and new line char trimmed
+		/// </summary>
+		/// <param name="raw"></param>
+		/// <returns></returns>
+		public static string[] RawStringToProgram(string raw)
+		{
+			string[] rawArray = raw.Split('\n');
+			string[] Program = rawArray.Select(x => x.TrimEnd('\r', '\n', ' ')).ToArray();
+
+			return Program;
+		}
+
+		/// <summary>
+		/// splits command into command word and arguments
+		/// </summary>
+		/// <param name="rawCommand"></param>
+		/// <returns></returns>
+		public static string[] ParseArguments(string rawCommand)
+        {
+			string[] rawArray = rawCommand.Split(' ');
+			string[] args = rawArray.Select(x => x.TrimEnd(' ', ',')).ToArray();
+
+			return args;
+		}
 
 		/// <summary>
 		/// command parser taking a string as input
@@ -23,8 +49,7 @@ namespace ASE_assignment
 		/// <exception cref="Exception"></exception>
 		public void ParseCommand(String commandInput)
 		{
-			string[] rawArray = commandInput.Split(' ');
-			string[] args = rawArray.Select(x => x.TrimEnd(' ', ',')).ToArray();
+			string[] args = ParseArguments(commandInput);
 
 			switch (args[0])
 			{

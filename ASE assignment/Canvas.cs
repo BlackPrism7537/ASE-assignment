@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace ASE_assignment
 {
-    class Canvas
+    public class Canvas
     {
         Graphics g;
         Pen Pen;

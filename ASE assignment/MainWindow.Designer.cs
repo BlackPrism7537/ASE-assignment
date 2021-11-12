@@ -2,7 +2,7 @@
 
 namespace ASE_assignment
 {
-    partial class mainWindow
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace ASE_assignment
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.CommandLine = new System.Windows.Forms.TextBox();
             this.RunProgramButton = new System.Windows.Forms.Button();
             this.RunCommandButton = new System.Windows.Forms.Button();

@@ -6,32 +6,19 @@ using System.Windows.Forms;
 
 namespace ASE_assignment
 {
-	public partial class mainWindow : Form
+	public partial class MainWindow : Form
 	{
 
 		CommandParser parser;
 		Canvas canvas;
 		Bitmap bitmap = new Bitmap(300, 300);
+		string[] output;
 
-		public mainWindow()
+		public MainWindow()
 		{
 			InitializeComponent();
 			this.canvas = new Canvas(Graphics.FromImage(this.bitmap));
 			this.parser = new CommandParser(canvas);
-		}
-
-		/// <summary>
-		/// converts raw string into string array 
-		/// splits at each new line and new line char trimmed
-		/// </summary>
-		/// <param name="raw"></param>
-		/// <returns></returns>
-		public static string[] RawStringToProgram(string raw)
-		{
-			string[] rawArray = raw.Split('\n');
-			string[] Program = rawArray.Select(x => x.TrimEnd('\r', '\n')).ToArray();
-
-			return Program;
 		}
 
 		/// <summary>
@@ -51,27 +38,31 @@ namespace ASE_assignment
 				
 		}
 
-		/// <summary>
-		/// takes string, converts into string array and individually runs them through the RunCommand() method
-		/// </summary>
-		/// <param name="program"></param>
-		public void RunProgram(string rawInput)
-		{
-			string[] program = RawStringToProgram(rawInput);
+        public CommandParser GetParser()
+        {
+            return parser;
+        }
 
-			Console.WriteLine("Running Program...");
-			foreach (string line in program)
-			{
-				RunCommandLine(line);
-			}
-			Console.WriteLine("Program Complete!");
+        /// <summary>
+        /// takes string, converts into string array and individually runs them through the RunCommand() method
+        /// </summary>
+        /// <param name="program"></param>
+        public void RunProgram(string rawInput, CommandParser parser)
+		{
+            Console.WriteLine("Running Program...");
+            string[] program = CommandParser.RawStringToProgram(rawInput);
+            foreach (string line in program)
+            {
+                RunCommandLine(line);
+            }
+            Console.WriteLine("Program Complete!");
 		}
 
 		private void CommandLine_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter)
 			{
-				if (this.CommandLine.Text == "run") RunProgram(this.ProgramInput.Text);
+				if (this.CommandLine.Text == "run") RunProgram(this.ProgramInput.Text, GetParser());
 				else RunCommandLine(this.CommandLine.Text);
 				this.CommandLine.Text = "";
 			}
@@ -79,14 +70,14 @@ namespace ASE_assignment
 
 		private void RunCommandButton_Click(object sender, EventArgs e)
 		{
-			if(this.CommandLine.Text == "run") RunProgram(this.ProgramInput.Text);
+			if(this.CommandLine.Text == "run") RunProgram(this.ProgramInput.Text, GetParser());
 			else RunCommandLine(this.CommandLine.Text);
 			this.CommandLine.Text = "";
 		}
 
 		private void RunProgramButton_Click(object sender, EventArgs e)
 		{
-			RunProgram(this.ProgramInput.Text);
+			RunProgram(this.ProgramInput.Text, GetParser());
 		}
 
 		private void pictureBox1_Paint(object sender, PaintEventArgs e)
