@@ -53,11 +53,13 @@ namespace ASE_assignment
 
 
         /// <summary>
-        /// takes array of strings and individually runs them through the RunCommand() method
+        /// takes string, converts into string array and individually runs them through the RunCommand() method
         /// </summary>
         /// <param name="program"></param>
-        public void RunProgram(string[] program)
+        public void RunProgram(string rawInput)
         {
+            string[] program = RawStringToProgram(rawInput);
+
             Console.WriteLine("Running Program...");
             foreach (string line in program)
             {
@@ -70,21 +72,22 @@ namespace ASE_assignment
         {
             if (e.KeyCode == Keys.Enter)
             {
-                RunCommandLine(this.CommandLine.Text);
+                if (this.CommandLine.Text == "run") RunProgram(this.ProgramInput.Text);
+                else RunCommandLine(this.CommandLine.Text);
                 this.CommandLine.Text = "";
             }
         }
 
         private void RunCommandButton_Click(object sender, EventArgs e)
         {
-            RunCommandLine("Button Click");
+            if(this.CommandLine.Text == "run") RunProgram(this.ProgramInput.Text);
+            else RunCommandLine(this.CommandLine.Text);
             this.CommandLine.Text = "";
         }
 
         private void RunProgramButton_Click(object sender, EventArgs e)
         {
-            string[] program = RawStringToProgram(this.ProgramInput.Text);
-            RunProgram(program);
+            RunProgram(this.ProgramInput.Text);
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
