@@ -108,7 +108,7 @@ namespace ASE_assignment
 					
 
 				// rectangle <width>, <height>
-				case "rectangle":
+				case "rect":
 					if (command.Args.Length != 2) throw new ArgumentOutOfRangeException("incorrect number of arguments");
 
 					if (!int.TryParse(command.Args[0], out _)) throw new FormatException("argument 1 not a number");
