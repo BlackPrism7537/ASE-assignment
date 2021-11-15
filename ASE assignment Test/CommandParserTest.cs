@@ -7,6 +7,10 @@ namespace ASE_assignment_Test
     [TestClass]
     public class CommandParserTest
     {
+
+        /// <summary>
+        /// tests the RawStringToProgram method with valid string input
+        /// </summary>
         [TestMethod]
         public void RawStringToProgram_withValidString()
         {
@@ -18,7 +22,6 @@ namespace ASE_assignment_Test
                 new ("reset", System.Array.Empty<string>())
             };
                 
-
 
             //act
             CommandParser.Command[] output = CommandParser.RawStringToProgram(rawInput);
@@ -37,6 +40,9 @@ namespace ASE_assignment_Test
             }
         }
 
+        /// <summary>
+        /// tests the RawStringToProgram method with empty string input
+        /// </summary>
         [TestMethod]
         public void RawStringToProgram_withEmptyString()
         {
@@ -60,6 +66,10 @@ namespace ASE_assignment_Test
             }
         }
 
+
+        /// <summary>
+        /// tests the ParseCommand method with valid string input
+        /// </summary>
         [TestMethod]
         public void ParseCommand_withValidString()
         {
@@ -80,6 +90,9 @@ namespace ASE_assignment_Test
             }
         }
 
+        /// <summary>
+        /// tests the ParseCommand method with empty string input
+        /// </summary>
         [TestMethod]
         public void ParseCommand_withEmptyString()
         {
@@ -100,6 +113,9 @@ namespace ASE_assignment_Test
             }
         }
 
+        /// <summary>
+        /// tests the ParseSyntax method with all valid command words and valid arguments
+        /// </summary>
         [TestMethod]
         public void ParseSyntax_withValidCommands()
         {
@@ -127,8 +143,11 @@ namespace ASE_assignment_Test
             }
         }
 
+        /// <summary>
+        /// tests the ParseSyntax method with an invalid command word 
+        /// triggering an Argument Exception
+        /// </summary>
         [TestMethod]
-        
         public void ParseSyntax_withInvalidCommand()
         {
             //arrange
@@ -142,7 +161,10 @@ namespace ASE_assignment_Test
             );
         }
 
-
+        /// <summary>
+        /// tests the ParseSyntax method with an invalid argument length 
+        /// triggering an Argument Out Of Range Exception
+        /// </summary>
         [TestMethod]
         public void ParseSyntax_withInvalidArgumentLength()
         {
@@ -157,6 +179,10 @@ namespace ASE_assignment_Test
             );
         }
 
+        /// <summary>
+        /// tests the ParseSyntax method with an invalid argument type 
+        /// triggering a Format Exception
+        /// </summary>
         [TestMethod]
         public void ParseSyntax_withInvalidArgumentType()
         {
