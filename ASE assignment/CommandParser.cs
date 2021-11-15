@@ -88,6 +88,9 @@ namespace ASE_assignment
 		/// </summary>
 		/// <param name="commandInput">command "command <arg1>... "</param>
 		/// <exception cref="Exception"></exception>
+		/// <todo>
+		/// convert switch cases into class inhertience and create custom exception types
+		/// </todo>
 		public bool ParseSyntax(Command command)
 		{
 			
