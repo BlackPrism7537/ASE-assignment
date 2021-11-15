@@ -123,7 +123,7 @@ namespace ASE_assignment_Test
             CommandParser parser = new(new Canvas());
             CommandParser.Command[] commands = { 
                 new("circle", new[] { "100" }),
-                new("rectangle", new[] {"10", "10"}),
+                new("rect", new[] {"10", "10"}),
                 new("triangle", new[] {"10"}),
                 new("moveTo", new[] {"10", "10"}),
                 new("drawTo", new[] {"10", "10"}),

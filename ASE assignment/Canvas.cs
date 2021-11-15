@@ -110,7 +110,7 @@ namespace ASE_assignment
                 case "green":
                     penColor = Color.Green;
                     break;
-                case "Blue":
+                case "blue":
                     penColor = Color.Blue;
                     break;
                 default:
